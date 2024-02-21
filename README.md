@@ -1,1 +1,4 @@
-![waltah](https://github.com/kualta/meth/assets/72769566/91da1de7-89ba-4edd-bd88-f274ba53292a)
+
+<p align="center">
+  <img src="https://github.com/kualta/meth/assets/72769566/ad2371f1-0296-421c-99ee-95cd0f222e27" alt="solidity waltah" width="600">
+</p>
