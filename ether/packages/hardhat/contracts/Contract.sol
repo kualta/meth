@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: MIT
 pragma solidity >0.8.4 <0.9.0;
 
-contract Storage {
+contract Contract {
 	address public minter;
 	mapping(address => uint) public balances;
 
