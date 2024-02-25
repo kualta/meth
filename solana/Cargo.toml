@@ -1,0 +1,13 @@
+[package]
+name = "lana"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+ahash = "=0.8.6"
+solana-program = "=1.18"
+
+[lib]
+name = "lana"
+crate-type = ["cdylib", "lib"]
+
