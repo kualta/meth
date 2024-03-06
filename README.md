@@ -1,4 +1,4 @@
-
-<p align="left">
-  <img src="https://github.com/kualta/meth/assets/72769566/3612bf9b-eb80-4489-a5f1-f9084c6f7cc0" alt="solidity waltah" width="600">
+<p align="center">
+  <img src="https://github.com/kualta/meth/assets/72769566/c8985876-ad82-4c2f-8601-0f7ac45754e9" alt="crypto waltah">
 </p>
+
