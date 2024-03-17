@@ -1,0 +1,6 @@
+[workspace]
+members = [
+  "./ink/flipper/",
+  "./ink/booper/",
+  "./ink/token/"
+]
