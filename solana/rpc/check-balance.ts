@@ -1,44 +1,40 @@
-import { Keypair, LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
-import { Connection, clusterApiUrl } from "@solana/web3.js";
-import { getKeypairFromFile } from "@solana-developers/helpers";
+import { LAMPORTS_PER_SOL, PublicKey } from "@solana/web3.js";
+import { Connection } from "@solana/web3.js";
 
-const keypair = await getKeypairFromFile("./keypair.json");
+const publicKey = new PublicKey(process.argv[2]);
 
-async function getDevnetBalance(address: PublicKey) {
-	const connection = new Connection(
-		"https://api.devnet.solana.com",
-		"confirmed",
-	);
-	console.log("Connected to Devnet");
-
-	if (!PublicKey.isOnCurve(address)) {
-		throw new Error("Invalid public key");
-	}
-	const balance = await connection.getBalance(address);
-	const balanceInSol = balance / LAMPORTS_PER_SOL;
-
-	console.log(
-		`The balance of the account at ${address} (Devnet) is ${balance} lamports (${balanceInSol} SOL)`,
-	);
+if (!publicKey || !PublicKey.isOnCurve(publicKey)) {
+	console.error("Invalid public key");
+	process.exit(1);
 }
 
-async function getMainnetBalance(address: PublicKey) {
-	const connection = new Connection(
-		"https://api.mainnet-beta.solana.com",
-		"confirmed",
-	);
+enum Endpoint {
+	MainnetBeta = "https://api.mainnet-beta.solana.com",
+	Testnet = "https://api.testnet.solana.com",
+	Devnet = "https://api.devnet.solana.com",
+}
+
+async function getBalance(
+	address: PublicKey,
+	endpoint: Endpoint = Endpoint.MainnetBeta,
+) {
+	const connection = new Connection(endpoint, "confirmed");
 	console.log("Connected to Mainnet");
 
 	if (!PublicKey.isOnCurve(address)) {
-		throw new Error("Invalid public key");
+		console.error("Invalid public key");
+		process.exit(1);
 	}
 	const balance = await connection.getBalance(address);
 	const balanceInSol = balance / LAMPORTS_PER_SOL;
 
 	console.log(
-		`The balance of the account at ${address} (Mainnet-beta) is ${balance} lamports (${balanceInSol} SOL)`,
+		`The balance of the account at ${address} ${
+			endpoint.split("//")[1].split(".")[1]
+		} is ${balanceInSol} SOL`,
 	);
 }
 
-getDevnetBalance(keypair.publicKey);
-getMainnetBalance(keypair.publicKey);
+getBalance(publicKey, Endpoint.MainnetBeta);
+getBalance(publicKey, Endpoint.Devnet);
+getBalance(publicKey, Endpoint.Testnet);
