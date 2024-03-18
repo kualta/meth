@@ -37,7 +37,7 @@ if (!lamportsAmount || Number.isNaN(lamportsAmount)) {
 }
 const LAMPORTS_TO_SEND = Number(lamportsAmount);
 
-console.log(`Sending ${LAMPORTS_TO_SEND} SOL to ${toPubkey}`);
+console.log(`Sending ${LAMPORTS_TO_SEND} lamports to ${toPubkey}`);
 
 const transaction = new Transaction();
 const sendSolInstruction = SystemProgram.transfer({
