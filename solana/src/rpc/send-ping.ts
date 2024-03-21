@@ -5,10 +5,10 @@ import {
 	getKeypairFromFile,
 } from "@solana-developers/helpers";
 
-const PING_PROGRAM_ADDRESS = new web3.PublicKey(
+export const PING_PROGRAM_ADDRESS = new web3.PublicKey(
 	"ChT1B39WKLS8qUrkLvFDXMhEJ4F1XZzwUNHUt4AU9aVa",
 );
-const PING_PROGRAM_DATA_ADDRESS = new web3.PublicKey(
+export const PING_PROGRAM_DATA_ADDRESS = new web3.PublicKey(
 	"Ah9K7dQ8EHaZqcAsgBW8w37yN2eAy3koFmUn4x3CJtod",
 );
 
